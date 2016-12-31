@@ -1,0 +1,19 @@
+# Permalinks
+permalink:           pretty
+
+# Setup
+title:               'Всякая всячина'
+tagline:             'Блог Вадима Великодного'
+description:         ''
+url:                 ''
+baseurl:             ''
+paginate:            5
+
+# About/contact
+author:
+  name:              Вадим Великодный
+  url:               https://github.com/velikodniy
+  email:             vadim@velikodniy.name
+
+# Custom vars
+version:             1.0.0
