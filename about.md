@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: О блоге
 ---
 
-Thanks for reading!
+Здесь пока ничего нет, но спасибо, что заглянули!
