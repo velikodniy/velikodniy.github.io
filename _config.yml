@@ -7,7 +7,7 @@ tagline:             'Статьи и заметки'
 description:         ''
 url:                 ''
 baseurl:             ''
-paginate:            1
+paginate:            5
 
 # About/contact
 author:
