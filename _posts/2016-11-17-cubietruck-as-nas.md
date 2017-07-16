@@ -493,16 +493,15 @@ sudo systemctl start transmission-daemon
 ---------------------
 
 Раньше я пользовался [Flexget](https://flexget.com/) — это необычайно
-мощная качалка файлов, которая, пожалуй может всё. Но поддавшись
-модным тенденциям перешёл на
-[Monitorrent](https://habrahabr.ru/post/305574/). У него чуть лучше
-поддержка популярных трекеров, но он не умеет, например, скачаивать
-премьеры. И с уведомлениями у него пака не очень. Но это всё
-поправимо.
+мощная качалка файлов, которая, пожалуй, может всё. Но, поддавшись
+модным тенденциям, перешёл на
+[Monitorrent](https://habrahabr.ru/post/305574/). У него лучше
+поддержка популярных трекеров, но он пока не умеет, например, скачивать
+премьеры. 
 
 Проще всего устанавливать его через
-[Docker](https://ru.wikipedia.org/wiki/Docker). Для этого нужно
-установить сам Docker.
+[Docker](https://ru.wikipedia.org/wiki/Docker). Для этого, конечно, нужно
+сперва установить сам Docker.
 
 ~~~ bash
 sudo apt install docker.io
@@ -514,35 +513,30 @@ sudo apt install docker.io
 sudo docker pull werwolfby/armhf-alpine-monitorrent
 ~~~
 
-Просмотр образов Docker:
+Просмотреть список образов Docker можно следующей командой:
 
 ~~~ bash
 sudo docker images
 ~~~
 
-Создание контейнера без его запуска:
+Создание контейнера без запуска:
 
 ~~~ bash
-sudo docker create -p 6687:6687 -v /mnt/data/monitorrent.db:/var/www/monitorrent/monitorrent.db:rw werwolfby/armhf-alpine-monitorrent /usr/bin/python server.py
+sudo docker create --name monitorrent -p 6687:6687 -v /mnt/data/monitorrent.db:/var/www/monitorrent/monitorrent.db:rw werwolfby/armhf-alpine-monitorrent /usr/bin/python server.py
 ~~~
 
-Здесь при помощи параметра -v файл хоста (база настроек) отображается
+Здесь при помощи параметра -v файл вне контейнера (база настроек) отображается
 в контейнер. Это нужно, чтобы при обновлении или перезапуске
 контейнера база не стёрлась.
 
+Параметр `--name` сразу даёт контейнеру имя `monitorrent`, чтобы потом его
+легко было найти.
 
-Следующей командой можно получить список контейнеров. Для каждого
-указан его ID (хеш) и кодовое имя. Для запуска и других операций можно
-использовать кодовое имя.
+Следующей командой можно получить список контейнеров и убедиться,
+что наш контейнер успешно создан.
 
 ~~~ bash
 sudo docker ps -a
-~~~
-
-Контейнер переименуем в monitorrent:
-
-~~~ bash
-sudo docker rename ИМЯ monitorrent
 ~~~
 
 Для автоматического запуска требуется service-файл `/etc/systemd/system/monitorrent.service`:
@@ -560,15 +554,34 @@ ExecStop=/usr/bin/docker stop -t 2 monitorrent
 
 [Install]
 WantedBy=default.target
+~~~
+
 Запуск и настройка автостарта после перезагрузки:
+
+~~~bash
 systemctl daemon-reload
 systemctl start monitorrent.service
 systemctl enable monitorrent.service
 ~~~
 
 Затем настраивается сам Monitorrent по адресу
-http://192.168.0.1:6687. Не забуьте задать пароль на вход в
+http://192.168.0.1:6687. Не забудьте задать пароль на вход в
 Monitorrent.
+
+Осталось только настроить уведомления. Тут уже каждый выбирает способ
+себе по душе. Для меня самыми удобными оказались уведомления через
+Telegram. Подробную инструкцию можно найти в
+[wiki проекта](https://github.com/werwolfby/monitorrent/wiki/FAQ).
+
+Для обновления, когда выйдет новая версия, нужно просто выполнить шаги:
+
+- снова вполнить команду `pull`, чтобы получить свежий код;
+- остановить старый контейнер: `sudo systemctl stop monitorrent`;
+- удалить старый контейнер: `sudo docker rm monitorrent`;
+- снова запустить контейнер командой `sudo systemctl start monitorrent`.
+
+Эти четыре команды можно поместить в скрипт и просто периодически
+выполнять его. Можно даже в cron.
 
 Samba
 =====
