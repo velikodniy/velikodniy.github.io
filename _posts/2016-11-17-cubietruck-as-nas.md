@@ -525,7 +525,7 @@ sudo docker images
 sudo docker create --name monitorrent -p 6687:6687 -v /mnt/data/monitorrent.db:/var/www/monitorrent/monitorrent.db:rw werwolfby/armhf-alpine-monitorrent /usr/bin/python server.py
 ~~~
 
-Здесь при помощи параметра -v файл вне контейнера (база настроек) отображается
+Здесь при помощи параметра `-v` файл вне контейнера (база настроек) отображается
 в контейнер. Это нужно, чтобы при обновлении или перезапуске
 контейнера база не стёрлась.
 
