@@ -841,10 +841,10 @@ g++ gpgpu.cpp -lGLESv2 -lEGL -o gpgpu
 Полезные источники
 ==================
 
-- http://www.mathematik.uni-dortmund.de/%7Egoeddeke/gpgpu/tutorial.html
+- [Более подробное руководство по GPGPU на OpenGL, но не OpenGL ES](http://www.mathematik.uni-dortmund.de/%7Egoeddeke/gpgpu/tutorial.html)
 - [Спецификация OpenGL ES 2.0](https://www.khronos.org/registry/OpenGL/specs/es/2.0/es_full_spec_2.0.pdf)
 - [Спецификация GLSL для OpenGL ES](https://www.khronos.org/files/opengles_shading_language.pdf)
-- [](http://docs.gl/)
+- [Удобный справочник по функциям OpenGL](http://docs.gl/)
 
 
 Приложение
