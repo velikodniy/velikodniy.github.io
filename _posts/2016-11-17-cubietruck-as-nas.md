@@ -694,7 +694,7 @@ deb http://apt.syncthing.net/ syncthing release
 ```
 И добавим ключ от этого репозитория:
 ```
-curl -s https://syncthing.net/release-key.txt | apt-key add -
+curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
 ```
 
 После этого можно установить Syncthing как обычно:
