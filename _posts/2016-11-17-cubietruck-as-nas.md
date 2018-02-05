@@ -152,6 +152,12 @@ sudo apt upgrade
 sudo hostnamectl set-hostname archive
 ~~~
 
+Сразу хочу оговориться, что это действие, как и многие другие можно выполнить
+с помощью утилиты `armbian-config`. Но мне нравится контролировать процесс настройки,
+да и команды несложные, поэтому пользоваться мы ей не будем.
+
+Тем не менее, если у вас нет опыта работы с Linux, то, возможно, эта утилита вам пригодится.
+
 Запуск команд без пароля
 ------------------------
 
@@ -669,15 +675,123 @@ sudo adduser --system --home /var/lib/dejadup --shell /bin/sh dejadup
 sudo chown -R dejadup:data /mnt/data/backups
 ~~~
 
+Syncthing
+=========
+
+Для тех, кто ещё не знает, [Syncthing](https://syncthing.net/) — это программа
+для синхронизации директорий через Интернет. Незаменивая вещь как для создания
+«домашнего облака», так и для того, чтобы делиться файлами с друзьями. В использовании
+немного непривычна, но если разобраться, то всё становится понятным и логичным.
+(Кстати, есть приложения под все популярные платформы и архитектуры.)
+
+Syncthing, к сожалению, отстуствует в официальном репозитории Armbian,
+но никто не мешает добавить репозиторий, где он есть.
+
+Создадим файл `/etc/apt/sources.list.d/syncthing.list`
+(естественно, от имени root) следующего содержания:
+```
+deb http://apt.syncthing.net/ syncthing release
+```
+И добавим ключ от этого репозитория:
+```
+curl -s https://syncthing.net/release-key.txt | apt-key add -
+```
+
+После этого можно установить Syncthing как обычно:
+```
+sudo aptitude update && sudo aptitude install syncthing syncthing-inotify
+```
+Первый пакет — это сама утилита, а второй предназначен для отслеживания изменений
+в синхронизируемой директории.
+
+Создадим пользователя, от имени которого будет работать демон.
+Он будет принадлежать группе data, чтобы упростить доступ к синхронизируемой директории.
+
+```bash
+sudo adduser --system --home /var/lib/syncthing syncthing
+sudo usermod -a -G data syncthing
+```
+
+Теперь настроим автоматический запуск через systemd. Для этого создадим два файла.
+
+Первый — `/etc/systemd/system/syncthing.service`:
+```
+[Unit]
+Description=Syncthing - Open Source Continuous File Synchronization
+After=network.target
+[Service]
+ExecStart=/usr/bin/syncthing -no-browser -no-restart
+Restart=on-failure
+SuccessExitStatus=3 4
+RestartForceExitStatus=3 4
+User=syncthing
+[Install]
+WantedBy=default.target
+```
+
+Второй — `/etc/systemd/system/syncthing-inotify.service`:
+```
+[Unit]
+Description=Syncthing Inotify File Watcher
+After=network.target syncthing.service
+Requires=syncthing.service
+[Service]
+User=syncthing
+ExecStart=/usr/bin/syncthing-inotify
+SuccessExitStatus=2
+RestartForceExitStatus=3
+Restart=on-failure
+ProtectSystem=full
+ProtectHome=read-only
+[Install]
+WantedBy=multi-user.target
+```
+
+Так как синхронизируемые каталоги часто бывают очень большими, увиличим лимит на количество открытых файлов:
+```bash
+echo -e "fs.inotify.max_user_watches=204800" | sudo tee -a /etc/sysctl.conf
+```
+
+Остаётся включить автозапуск и запустить демоны:
+```bash
+sudo systemctl enable syncthing{,-inotify}
+sudo systemctl start syncthing{,-inotify}
+```
+
+У этой утилиты есть веб-интерфейс, работающий на порту 8384 через который
+можно добавить директории к синхронизации. Однако по умолчанию доступ разрешён
+только с локального компьютера. Если же нужно обращаться к нему с удалённого компьютера,
+то нужно открыть файл `/var/lib/syncthing/.config/syncthing/config.xml`
+и изменить параметр `/configuration/gui/address` на `0.0.0.0:8384`.
+Однако, надо помнить, что тогда доступ к интерфейсу будет открыт для всех.
+
+После изменений настроек, демоны нужно перезапустить:
+```bash
+sudo systemctl restart syncthing{,-inotify}
+```
+
+После первого запуска интефейса (по адресу http://192.168.0.1:8384) Syncthing предложит
+задать пароль для входа. Настоятельно рекомендую это сделать.
+
+Директорию для синхронизации создаём как обычно:
+```bash
+sudo mkdir /mnt/data/sync
+sudo chown syncthing:data /mnt/data/sync
+sudo chmod 0774 /mnt/data/sync
+```
+
+Остаётся лишь добавить её для синхронизации.
+
 Что дальше?
 ===========
 
 К сожалению, многие вещи не были освещены:
 
-* Syncthing — автоматическая синхронизация файлов между многими устройствами.
+* настройка файрволла (`ufw`),
+* создание прокси-сервера для удобного доступа ко всем сервисам,
 * MPD-сервер — подключив колонки к CubieTruck можно крутить на нём музыку, управляя вопроизведением с компьютера или телефона.
 * DLNA — автоматическое перекодирования мультимедиа для воспроизведения с устройств.
 * VPN — использование CubieTruck как VPN-сервера.
 * и многое другое.
 
-Может быть, позже я дополню этот пост.
+Позже я дополню этот пост.
