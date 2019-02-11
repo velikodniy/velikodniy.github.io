@@ -815,3 +815,4 @@ b_2 = -\frac18.
 
 - Уэлстид С. Фракталы и вейвлеты для сжатия изображений в действии. — М.: Триумф, 2003.
 - Штарк Г.-Г. Применение вейвлетов для ЦОС. — М.: Техносфера, 2007.
+- Usevitch, B. [A tutorial on modern lossy wavelet image compression: Foundations of JPEG 2000.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.6.7887&rep=rep1&type=pdf)) Signal Processing Magazine, IEEE. 18. 22 - 35. DOI: 10.1109/79.952803.
