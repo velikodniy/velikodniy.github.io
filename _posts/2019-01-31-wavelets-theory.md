@@ -583,7 +583,7 @@ c_4 = \frac{1-\sqrt3}{4\sqrt2}.\\
 Если заменить в правой части второго уравнения 1 на 2 и решить систему,
 то получим те же коэффициенты, что и в Википедии.
 
-А, скажем, в статье [P. Getreuer Filter Coefficients to Popular
+А, скажем, в статье P. Getreuer [Filter Coefficients to Popular
 Wavelets](http://read.pudn.com/downloads129/sourcecode/math/551883/Filter%20Coefficients%20to%20Popular%20Wavelets.PDF),
 в которой приводятся коэффициенты для распространённых вейвлетов,
 значения те же, что и у нас.
@@ -815,4 +815,4 @@ b_2 = -\frac18.
 
 - Уэлстид С. Фракталы и вейвлеты для сжатия изображений в действии. — М.: Триумф, 2003.
 - Штарк Г.-Г. Применение вейвлетов для ЦОС. — М.: Техносфера, 2007.
-- Usevitch, B. [A tutorial on modern lossy wavelet image compression: Foundations of JPEG 2000.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.6.7887&rep=rep1&type=pdf)) Signal Processing Magazine, IEEE. 18. 22 - 35. DOI: 10.1109/79.952803.
+- Usevitch B. [A tutorial on modern lossy wavelet image compression: Foundations of JPEG 2000.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.6.7887&rep=rep1&type=pdf) Signal Processing Magazine, IEEE. 18. 22 - 35. DOI: 10.1109/79.952803.
