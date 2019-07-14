@@ -221,6 +221,7 @@ def translate_unary_op(node):
 
 Теперь самое интересное — бинарные операции. Скобки нужно добавлять только вокруг операндов произведения и для основания степени. Как и в прошлый раз, только если операнд — сложение.
 
+{% raw  %}
 ```python
 def translate_bin_op(node):
     left = translate(node.left)
@@ -259,6 +260,7 @@ def translate_bin_op(node):
     else:
         raise ValueError('Node {} is not supported'.format(type(node)))
 ```
+{% endraw  %}
 
 Проверим, как работает наш транслятор:
 
@@ -358,6 +360,8 @@ def translate(node):
 
 Теперь добавим операцию `not` к унарным:
 
+
+{% raw  %}
 ```python
 def translate_unary_op(node):
     expression = translate(node.operand)
@@ -381,6 +385,7 @@ def translate_unary_op(node):
         expression=expression
     )
 ```
+{% endraw  %}
 
 Обработаем сравнения. Нам потребуется вспомогательная функция, которая по типу операции возвращает значок.
 
