@@ -413,9 +413,9 @@ def translate_compare(node):
 ```python
 def bool_op_sign(op):
     if isinstance(op, ast.And):
-        return '\wedge'
+        return '\\wedge'
     elif isinstance(op, ast.Or):
-        return '\vee'
+        return '\\vee'
     else:
         raise ValueError('Operator {} is not supported'.format(type(op)))
 
