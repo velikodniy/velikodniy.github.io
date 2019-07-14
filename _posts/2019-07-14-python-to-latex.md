@@ -387,9 +387,9 @@ def translate_unary_op(node):
 ```python
 COMPARE_OPS = {
     ast.Lt: '<',
-    ast.LtE: '\leq',
+    ast.LtE: '\\leq',
     ast.Gt: '>',
-    ast.GtE: '\geq',
+    ast.GtE: '\\geq',
     ast.Eq: '=',
 }
 
