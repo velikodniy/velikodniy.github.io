@@ -513,22 +513,15 @@ sudo systemctl start transmission-daemon
 sudo apt install docker.io
 ~~~
 
-Теперь устанавливаем образ с Monitorrent:
+Теперь запустим контейнер с Monitorrent:
 
 ~~~ bash
-sudo docker pull werwolfby/armhf-alpine-monitorrent
-~~~
-
-Просмотреть список образов Docker можно следующей командой:
-
-~~~ bash
-sudo docker images
-~~~
-
-Создание контейнера без запуска:
-
-~~~ bash
-sudo docker create --name monitorrent -p 6687:6687 -v /mnt/data/monitorrent.db:/var/www/monitorrent/monitorrent.db:rw werwolfby/armhf-alpine-monitorrent /usr/bin/python server.py
+sudo docker run -d \
+    --name monitorrent \
+    -p 6687:6687 \
+    --restart unless-stopped \
+    -v /mnt/data/monitorrent.db:/var/www/monitorrent/monitorrent.db:rw \
+    werwolfby/armhf-alpine-monitorrent
 ~~~
 
 Здесь при помощи параметра `-v` файл вне контейнера (база настроек) отображается
@@ -539,35 +532,10 @@ sudo docker create --name monitorrent -p 6687:6687 -v /mnt/data/monitorrent.db:/
 легко было найти.
 
 Следующей командой можно получить список контейнеров и убедиться,
-что наш контейнер успешно создан.
+что наш контейнер успешно создан и запущен.
 
 ~~~ bash
 sudo docker ps -a
-~~~
-
-Для автоматического запуска требуется service-файл `/etc/systemd/system/monitorrent.service`:
-
-~~~
-[Unit]
-Description=Monitorrent
-Requires=docker.service
-After=docker.service
-
-[Service]
-Restart=always
-ExecStart=/usr/bin/docker start -a monitorrent
-ExecStop=/usr/bin/docker stop -t 2 monitorrent
-
-[Install]
-WantedBy=default.target
-~~~
-
-Запуск и настройка автостарта после перезагрузки:
-
-~~~bash
-systemctl daemon-reload
-systemctl start monitorrent.service
-systemctl enable monitorrent.service
 ~~~
 
 Затем настраивается сам Monitorrent по адресу
@@ -578,17 +546,6 @@ http://192.168.0.1:6687. Не забудьте задать пароль на в
 Telegram. Подробную инструкцию можно найти в
 [wiki проекта](https://github.com/werwolfby/monitorrent/wiki/FAQ).
 
-Для обновления, когда выйдет новая версия, нужно просто проделать
-следующие шаги:
-
-- снова выполнить команду `pull`, чтобы получить свежий код;
-- остановить старый контейнер: `sudo systemctl stop monitorrent`;
-- удалить старый контейнер: `sudo docker rm monitorrent`;
-- создать новый контейнер командой `create`;
-- запустить контейнер командой `sudo systemctl start monitorrent`.
-
-Эти команды можно поместить в скрипт и просто периодически
-выполнять его. Можно даже в cron.
 
 Samba
 =====
