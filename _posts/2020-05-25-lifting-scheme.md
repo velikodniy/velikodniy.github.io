@@ -258,11 +258,11 @@ $$
 Для этого выразим значения $s_i$:
 
 $$
-\begin{multline}
+\begin{aligned}
 s_i &= x_i + \frac12 \frac{d_{i-1} + d_{i}}2 =\\
- = x_i + \frac14 \left( y_{i-1} - \frac{x_{i-1} + x_{i}}2 + y_i - \frac{x_i + x_{i+1}}2 \right) =\\
- = -\frac18 x_{i-1} + \frac28 y_{i-1} + \frac68 x_i + \frac28 y_i -\frac18 x_{i+1}.
-\end{multline}
+    &= x_i + \frac14 \left( y_{i-1} - \frac{x_{i-1} + x_{i}}2 + y_i - \frac{x_i + x_{i+1}}2 \right) =\\
+    &= -\frac18 x_{i-1} + \frac28 y_{i-1} + \frac68 x_i + \frac28 y_i -\frac18 x_{i+1}.
+\end{aligned}
 $$
 
 Возьмём линейный сигнал в общем виде:
