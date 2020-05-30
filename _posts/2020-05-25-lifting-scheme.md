@@ -87,7 +87,7 @@ _Значения соседних пикселей обычно близки._
 
 \\[
 \begin{aligned}
-s &= \frac{x+y}2,\\
+s &= \frac{x+y}2,\\\\
 d &= y - x.
 \end{aligned}
 \\]
@@ -96,7 +96,7 @@ d &= y - x.
 
 \\[
 \begin{aligned}
-x &= s + \frac{d}2,\\
+x &= s + \frac{d}2,\\\\
 y &= s - \frac{d}2.
 \end{aligned}
 \\]
@@ -217,7 +217,7 @@ x_0, y_0, x_1, y_1, x_2, y_2.
 
 \\[
 \begin{aligned}
-d_i &= y_i - p_i = y_i - x_i,\\
+d_i &= y_i - p_i = y_i - x_i,\\\\
 s_i &= x_i + u_i = x_i + \frac12 d_{i}.
 \end{aligned}
 \\]
@@ -255,7 +255,7 @@ s_i &= x_i + u_i = x_i + \frac12 d_{i}.
 
 \\[
 \begin{aligned}
-d_i = y_i - \frac{x_i + x_{i+1}}2,\\
+d_i = y_i - \frac{x_i + x_{i+1}}2,\\\\
 s_i = x_i + \frac12 \frac{d_{i-1} + d_{i}}2.
 \end{aligned}
 \\]
@@ -269,7 +269,7 @@ s_i = x_i + \frac12 \frac{d_{i-1} + d_{i}}2.
 
 \\[
 \begin{aligned}
-s_i &= x_i + \frac12 \frac{d_{i-1} + d_{i}}2 =\\
+s_i &= x_i + \frac12 \frac{d_{i-1} + d_{i}}2 =\\\\
     &= x_i + \frac14 \left( y_{i-1} - \frac{x_{i-1} + x_{i}}2 + y_i - \frac{x_i + x_{i+1}}2 \right) =\\
     &= -\frac18 x_{i-1} + \frac28 y_{i-1} + \frac68 x_i + \frac28 y_i -\frac18 x_{i+1}.
 \end{aligned}

@@ -208,15 +208,15 @@ RAR, gzip, bzip2 и так далее. Неудивительно, что бла
 преобразование Хаара.
 
 Итак, у нас была пара пикселей (вектор)
-\\(\begin{pmatrix} x \\ y \end{pmatrix}\\),
+\\(\begin{pmatrix} x \\\\ y \end{pmatrix}\\),
 а мы хотим получить пару
-\\(\begin{pmatrix} \frac{y+x}2 \\ \frac{y-x}2 \end{pmatrix}\\).
+\\(\begin{pmatrix} \frac{y+x}2 \\\\ \frac{y-x}2 \end{pmatrix}\\).
 
 Такое преобразование описывается матрицей
 
 \\[
 \begin{pmatrix}
-  \phantom{-}\frac12 & \frac12 \\
+  \phantom{-}\frac12 & \frac12 \\\\
             -\frac12 & \frac12
 \end{pmatrix}.
 \\]
@@ -225,11 +225,11 @@ RAR, gzip, bzip2 и так далее. Неудивительно, что бла
 
 \\[
 \begin{pmatrix}
-  \phantom{-}\frac12 & \frac12 \\
+  \phantom{-}\frac12 & \frac12 \\\\
   -\frac12 & \frac12
 \end{pmatrix}
-\begin{pmatrix} x \\ y \end{pmatrix}  =
-\begin{pmatrix} \frac{y+x}2 \\ \frac{y-x}2 \end{pmatrix},
+\begin{pmatrix} x \\\\ y \end{pmatrix}  =
+\begin{pmatrix} \frac{y+x}2 \\\\ \frac{y-x}2 \end{pmatrix},
 \\]
 
 что нам и требовалось.
@@ -249,7 +249,7 @@ RAR, gzip, bzip2 и так далее. Неудивительно, что бла
 определителю матрицы. Посмотрим, какой он для преобразования Хаара.
 
 \\[
-\det\begin{pmatrix} \phantom{-}\frac12 & \frac12 \\ -\frac12 & \frac12 \end{pmatrix} = \frac12\cdot\frac12-\left(-\frac12\cdot\frac12\right) = \frac12.
+\det\begin{pmatrix} \phantom{-}\frac12 & \frac12 \\\\ -\frac12 & \frac12 \end{pmatrix} = \frac12\cdot\frac12-\left(-\frac12\cdot\frac12\right) = \frac12.
 \\]
 
 Для того, чтобы определитель стал равен единице достаточно умножить
@@ -262,7 +262,7 @@ RAR, gzip, bzip2 и так далее. Неудивительно, что бла
 \\[
 H =
 \begin{pmatrix}
-  \phantom{-}\frac1{\sqrt2} & \frac1{\sqrt2} \\
+  \phantom{-}\frac1{\sqrt2} & \frac1{\sqrt2} \\\\
   -\frac1{\sqrt2} & \frac1{\sqrt2}
 \end{pmatrix}.
 \\]
@@ -276,7 +276,7 @@ H =
 умножении векторов с полусуммами и полуразностями на неё:
 
 \\[
-\begin{pmatrix} x \\ y \end{pmatrix} H^{-1} = \begin{pmatrix} s \\ d \end{pmatrix}.
+\begin{pmatrix} x \\\\ y \end{pmatrix} H^{-1} = \begin{pmatrix} s \\ d \end{pmatrix}.
 \\]
 
 Вообще говоря, поиск обратной матрицы — не такая простая задача. Но,
@@ -311,8 +311,8 @@ v_1 v_2^T = v_2 v_1^T = 0.
 
 \\[
 H^{-1} = H^T =
-\begin{pmatrix} \phantom{-}\frac12 & \frac12 \\ -\frac12 & \frac12 \end{pmatrix}^T =
-\begin{pmatrix} \frac12 & -\frac12 \\ \frac12 & \phantom{-}\frac12 \end{pmatrix}.
+\begin{pmatrix} \phantom{-}\frac12 & \frac12 \\\\ -\frac12 & \frac12 \end{pmatrix}^T =
+\begin{pmatrix} \frac12 & -\frac12 \\\\ \frac12 & \phantom{-}\frac12 \end{pmatrix}.
 \\]
 
 В справедливости этого выражения можно убедиться умножив \\(H\\) на
@@ -322,7 +322,7 @@ H^{-1} = H^T =
 произведение будет равно единичной матрице
 
 \\[
-\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.
+\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix}.
 \\]
 
 А единичная матрица — это отсутствие преобразования, так как она не
@@ -343,10 +343,10 @@ H^{-1} = H^T =
 
 \\[
 \begin{pmatrix}
-\phantom{-}\frac1{\sqrt{2}} & \frac1{\sqrt{2}} &&& \\
--\frac1{\sqrt{2}} & \frac1{\sqrt{2}} &&& \\
-&& \phantom{-}\frac1{\sqrt{2}} & \frac1{\sqrt{2}} & \\
-&& -\frac1{\sqrt{2}} & \frac1{\sqrt{2}} & \\
+\phantom{-}\frac1{\sqrt{2}} & \frac1{\sqrt{2}} &&& \\\\
+-\frac1{\sqrt{2}} & \frac1{\sqrt{2}} &&& \\\\
+&& \phantom{-}\frac1{\sqrt{2}} & \frac1{\sqrt{2}} & \\\\
+&& -\frac1{\sqrt{2}} & \frac1{\sqrt{2}} & \\\\
 &&&& \ddots
 \end{pmatrix}.
 \\]
@@ -544,10 +544,10 @@ d = c_4x - c_3y + c_2z - c_1t.
 
 \\[
 \begin{pmatrix}
-c_1 & \phantom{-}c_2 & c_3 & \phantom{-}c_4  &&& \\
-c_4 &           -c_3 & c_2 &           -c_1  &&& \\
-&& c_1 & \phantom{-}c_2 & c_3 & \phantom{-}c_4  & \\
-&& c_4 &           -c_3 & c_2 &           -c_1  & \\
+c_1 & \phantom{-}c_2 & c_3 & \phantom{-}c_4  &&&  \\\\
+c_4 &           -c_3 & c_2 &           -c_1  &&&  \\\\
+&& c_1 & \phantom{-}c_2 & c_3 & \phantom{-}c_4  & \\\\
+&& c_4 &           -c_3 & c_2 &           -c_1  & \\\\
 &&&&&& \ddots
 \end{pmatrix}.
 \\]

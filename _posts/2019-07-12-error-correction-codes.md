@@ -23,7 +23,7 @@ title: Корректирующие коды на пальцах
 
 \\[
 \begin{aligned}
-A &\to 0,\\
+A &\to 0,\\\\
 B &\to 1.
 \end{aligned}
 \\]
@@ -43,7 +43,7 @@ A \to 0 \rightsquigarrow \underline{1} \to B.
 
 \\[
 \begin{aligned}
-A &\to 00,\\
+A &\to 00,\\\\
 B &\to 11.
 \end{aligned}
 \\]
@@ -60,7 +60,7 @@ A \to 00 \rightsquigarrow 0\underline{1} \to ?.
 
 \\[
 \begin{aligned}
-A &\to 000,\\
+A &\to 000,\\\\
 B &\to 111.
 \end{aligned}
 \\]
@@ -174,10 +174,10 @@ d_{\min}\geqslant k + 1.
 
 \\[
 \begin{aligned}
-A \to 10100,\\
-B \to 01000,\\
-C \to 00111,\\
-D \to 11011.\\
+A \to 10100,\\\\
+B \to 01000,\\\\
+C \to 00111,\\\\
+D \to 11011.\\\\
 \end{aligned}
 \\]
 
@@ -202,9 +202,9 @@ A \to 10100 \rightsquigarrow 101\underline{1}0.
 
 \\[
 \begin{aligned}
-A:\, d(10110, 10100) &= 1,\\
-B:\, d(10110, 01000) &= 4,\\
-C:\, d(10110, 00111) &= 2,\\
+A:\, d(10110, 10100) &= 1,\\\\
+B:\, d(10110, 01000) &= 4,\\\\
+C:\, d(10110, 00111) &= 2,\\\\
 D:\, d(10110, 11011) &= 3.
 \end{aligned}
 \\]
@@ -232,9 +232,9 @@ A \to 10100 \rightsquigarrow 101\underline{1}0 \to A?.
 
 \\[
 \begin{aligned}
-0 + 0 &= 0,\\
-0 + 1 &= 1,\\
-1 + 0 &= 1,\\
+0 + 0 &= 0,\\\\
+0 + 1 &= 1,\\\\
+1 + 0 &= 1,\\\\
 1 + 1 &= 0.
 \end{aligned}
 \\]
@@ -263,7 +263,7 @@ x + y = x - y.
 
 \\[
 \begin{aligned}
-A &\to 000,\\
+A &\to 000,\\\\
 B &\to 111.
 \end{aligned}
 \\]
@@ -281,7 +281,7 @@ B &\to 111.
 \\[
 \left\{
 \begin{aligned}
-x_1 &= x_2,\\
+x_1 &= x_2,\\\\
 x_2 &= x_3.
 \end{aligned}
 \right.
@@ -292,7 +292,7 @@ x_2 &= x_3.
 \\[
 \left\{
 \begin{aligned}
-x_1 + x_2 &= 0,\\
+x_1 + x_2 &= 0,\\\\
 x_2 + x_3 &= 0.
 \end{aligned}
 \right.
@@ -303,7 +303,7 @@ x_2 + x_3 &= 0.
 \\[
 \left\{
 \begin{aligned}
-1\cdot x_1 + 1\cdot x_2 + 0\cdot x_3 &= 0,\\
+1\cdot x_1 + 1\cdot x_2 + 0\cdot x_3 &= 0,\\\\
 0\cdot x_1 + 1\cdot x_2 + 1\cdot x_3 &= 0.
 \end{aligned}
 \right.
@@ -320,7 +320,7 @@ Hx^T = 0,
 \\[
 H =
 \begin{pmatrix}
-1 & 1 & 0\\
+1 & 1 & 0\\\\
 0 & 1 & 1
 \end{pmatrix}.
 \\]
@@ -339,7 +339,7 @@ H =
 \\[
 \left\{
 \begin{aligned}
-x_1 + x_2 &= 0,\\
+x_1 + x_2 &= 0,\\\\
 x_2 + x_3 &= 0.
 \end{aligned}
 \right.
@@ -352,8 +352,8 @@ x_2 + x_3 &= 0.
 \\[
 H =
 \begin{pmatrix}
-1 & 0 & 1 & 0 & 0 \\
-0 & 1 & 1 & 0 & 1\\
+1 & 0 & 1 & 0 & 0\\\\
+0 & 1 & 1 & 0 & 1\\\\
 0 & 0 & 0 & 1 & 1
 \end{pmatrix}.
 \\]
@@ -363,8 +363,8 @@ H =
 \\[
 \left\{
 \begin{aligned}
-x_1 + x_3 &= 0,\\
-x_2 + x_3 + x_5 &= 0,\\
+x_1 + x_3 &= 0,\\\\
+x_2 + x_3 + x_5 &= 0,\\\\
 x_4 + x_5 &= 0.
 \end{aligned}
 \right.
@@ -393,8 +393,8 @@ H(a+b)^T=Ha^T+Hb^T=0+0=0,
 \\[
 \left\{
 \begin{aligned}
-x_1  &= x_3,\\
-x_2  &= x_3 + x_5,\\
+x_1  &= x_3,\\\\
+x_2  &= x_3 + x_5,\\\\
 x_4  &= x_5.
 \end{aligned}
 \right.
@@ -404,7 +404,7 @@ x_4  &= x_5.
 
 \\[
 \begin{aligned}
-x_3=1, x_5=0:\quad x_1=1, x_2=1, x_4=0 \Rightarrow x^{(1)} = (1, 1, 1, 0, 0),\\
+x_3=1, x_5=0:\quad x_1=1, x_2=1, x_4=0 \Rightarrow x^{(1)} = (1, 1, 1, 0, 0),\\\\
 x_3=0, x_5=1:\quad x_1=0, x_2=1, x_4=1 \Rightarrow x^{(2)} = (0, 1, 0, 1, 1).
 \end{aligned}
 \\]
@@ -423,7 +423,7 @@ a_1 x^{(1)}+a_2 x^{(2)},
 \\[
 (a_1, a_2)\cdot
 \begin{pmatrix}
-1 & 1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 0 & 0\\\\
 0 & 1 & 0 & 1 & 1
 \end{pmatrix}
  = aG.
@@ -439,9 +439,9 @@ a \to aG.
 
 \\[
 \begin{aligned}
-00 &\to 00000,\\
-01 &\to 01011,\\
-10 &\to 11100,\\
+00 &\to 00000,\\\\
+01 &\to 01011,\\\\
+10 &\to 11100,\\\\
 11 &\to 10111.
 \end{aligned}
 \\]
@@ -477,7 +477,7 @@ e = x - v.
 
 \\[
 \begin{aligned}
-v &= x + e,\\
+v &= x + e,\\\\
 x &= v + e.
 \end{aligned}
 \\]
