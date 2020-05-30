@@ -278,9 +278,9 @@ print(translate(tree.body[0].value))
 
 Это соответствует выражению
 
-\[
+\\[
 - \left( x + 2 \right) \cdot y \cdot z + \frac{3 \cdot {\left( 2 + v \right)} ^ {2}}{u}
-\]
+\\]
 
 Вроде неплохо.
 
@@ -458,9 +458,9 @@ print(translate(tree.body[0].value))
 
 Это соответствует формуле
 
-\[
+\\[
 \overline{A \geq B} \wedge \left( 0 < C \leq 1 \right).
-\]
+\\]
 
 Всё, как и планировалось.
 
