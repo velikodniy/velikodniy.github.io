@@ -1,19 +1,21 @@
-# Permalinks
-permalink:           pretty
-
-# Setup
 title:               'Вадим Великодный'
 tagline:             'Статьи и заметки'
 description:         ''
-url:                 ''
-baseurl:             ''
-paginate:            5
-
-# About/contact
 author:
   name:              Вадим Великодный
   url:               https://github.com/velikodniy
   email:             vadim@velikodniy.name
+
+url:                 ''
+baseurl:             ''
+
+paginate:            5
+permalink:           pretty
+
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
 
 # Custom vars
 version:             1.0.0
