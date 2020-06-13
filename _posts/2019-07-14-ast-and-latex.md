@@ -486,4 +486,8 @@ $$
 
 JIT-компиляция — это как раз то, что делает библиотека Numba. Она по исходному коду функции на Python восстанавливает синтаксическое дерево и преобразует его в машинные команды с помощью библиотеки LLVM. Это значительно ускоряет вычисления. С другой стороны, по понятным причинам не любой код на Python можно так преобразовать. Всё же Python очень высокоуровневый, и не всё в нём можно легко оптимизировать.
 
+Вы можете [скачать]({{ site.url }}/assets/2019-07-14-ast-and-latex/python-to-latex.ipynb) код к этой статье или [запустить](https://mybinder.org/v2/gh/velikodniy/velikodniy.github.io/master?filepath=assets%2F2019-07-14-ast-and-latex%2Fpython-to-latex.ipynb) его в Binder.
+
+
+
 Код к этой статье я [выложил на Github](https://gist.github.com/velikodniy/5276c58fe6c952432179fc94edbf43f8).
