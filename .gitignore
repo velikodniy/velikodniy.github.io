@@ -43,3 +43,6 @@ bower_components
 
 # Jekyll
 .jekyll-cache
+
+# VS Code
+.vscode
